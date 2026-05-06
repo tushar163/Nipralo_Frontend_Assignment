@@ -1,9 +1,11 @@
-import React from 'react'
+import IndustriesSection from "@/Components/industriesComponents/IndustriesSection";
 
-function page() {
+function IndustriesPage() {
   return (
-    <div>page</div>
-  )
+    <main className="bg-white">
+      <IndustriesSection />
+    </main>
+  );
 }
 
-export default page
+export default IndustriesPage;

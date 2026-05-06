@@ -1,9 +1,17 @@
-import React from 'react'
+import PentakuhlAboutSection from "@/Components/pentakuhlComponents/PentakuhlAboutSection";
+import PentaKuhlHero from "@/Components/pentakuhlComponents/PentaKuhlHero";
+import ProductSolutionsSection from "@/Components/pentakuhlComponents/ProductSolutionsSection";
+import ReadMoreSection from "@/Components/pentakuhlComponents/ReadMoreSection";
 
-function page() {
+function PentaKuhlPage() {
   return (
-    <div>page</div>
-  )
+    <main className="bg-white">
+      <PentaKuhlHero />
+      <PentakuhlAboutSection />
+      <ReadMoreSection />
+      <ProductSolutionsSection />
+    </main>
+  );
 }
 
-export default page
+export default PentaKuhlPage;
