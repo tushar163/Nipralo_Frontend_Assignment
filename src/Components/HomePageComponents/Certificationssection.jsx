@@ -1,21 +1,21 @@
-"use client";
 
 import Image from "next/image";
+import "./../../app/globals.css";
 
 const certifications = [
-    { name: "MTO", logo: "/certifications/mto.png" },
-    { name: "Pharma Aero", logo: "/certifications/pharma-aero.png" },
-    { name: "Indo-Italian Chamber", logo: "/certifications/indo-italian-chamber.png" },
-    { name: "WCA Inter Global", logo: "/certifications/wca-inter-global.png" },
-    { name: "GDP Certified", logo: "/certifications/gdp.png" },
-    { name: "IATA", logo: "/certifications/iata.png" },
-    { name: "ISO 9001", logo: "/certifications/iso-9001.png" },
+    { name: "MTO", logo: "/logo1.png" },
+    { name: "Pharma Aero", logo: "/logo2.png" },
+    { name: "Indo-Italian Chamber", logo: "/logo3.png" },
+    { name: "WCA Inter Global", logo: "/logo4.png" },
+    { name: "GDP Certified", logo: "/logo8.png" },
+    { name: "IATA", logo: "/logo6.png" },
+    { name: "ISO 9001", logo: "/logo7.png" },
 ];
 
 function CertCard({ name, logo }) {
     return (
         <div className="flex-shrink-0 w-[200px] h-[140px] sm:w-[220px] sm:h-[150px] bg-white rounded-2xl shadow-sm flex items-center justify-center px-6 mx-3">
-            {/* Replace the div below with <Image> when real logos are available */}
+            
             <div className="relative w-full h-full flex items-center justify-center">
                 <Image
                     src={logo}
@@ -30,7 +30,7 @@ function CertCard({ name, logo }) {
 }
 
 export default function CertificationsSection() {
-    // Duplicate array for seamless infinite loop
+    
     const doubled = [...certifications, ...certifications];
 
     return (
@@ -61,20 +61,7 @@ export default function CertificationsSection() {
                 </div>
             </div>
 
-            {/* Inline keyframe style */}
-            <style jsx>{`
-        @keyframes marquee {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-        .animate-marquee {
-          animation: marquee 28s linear infinite;
-        }
-      `}</style>
+           
         </section>
     );
 }

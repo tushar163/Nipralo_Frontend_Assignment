@@ -2,6 +2,7 @@
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -10,7 +11,7 @@ const reviews = [
     {
         company: "Lufthansa Cargo",
         companyTagline: "Networking the world.",
-        logo: "/logos/lufthansa-cargo.png",
+        logo: "/Award11.png",
         quote:
             '"Penta Freight India was founded 25 years ago and has been a highly valued and reliable partner of Lufthansa Cargo since then. We know that they always stand by their commitment, which makes a meaningful difference to our business. Their continuous high focus on customer service and their strive towards individual solutions are key to staying dynamic and competitive in the market. Penta Freight is a pioneer in various ways: They were amongst the first forwarders to become our Premium Partner and so far they are the only one in India.... "',
         name: "Frank Naeve",
@@ -20,7 +21,7 @@ const reviews = [
     {
         company: "Sun Pharma",
         companyTagline: "",
-        logo: "/logos/sun-pharma.png",
+        logo: "/SunPharm.png",
         quote:
             '"We highly regard Penta Freight\'s professionalism and knowledge in the freight field. Their team takes the work load and worry off our shoulders. For about two decades we have been satisfied by the flexible, reliable and trustworthy service and excellent quality of work. One key feature that Penta Freight portrays is that they understand our needs and put their best efforts in making thing possible. They have continued to innovate and change with the freight industry.... "',
         name: "Makarand Sane",
@@ -30,9 +31,9 @@ const reviews = [
     {
         company: "Watson Pharmaceuticals",
         companyTagline: "",
-        logo: "/logos/watson.png",
+        logo: "/Watson.png",
         quote:
-            '"Penta Freight has been one of our export LSP\'s for several years and our experience with them has been consistently good. Besides having strong relationships with airlines to obtain competitive rates, Penta Freight has the ability to get things done in a compliant manner. In addition, an excellent service level and a can-do attitude make them a preferred partner.... "',
+            '"Penta Freight has been one of our export LSP’s for several years and our experience with them has been consistently good. Besides having strong relationships with airlines to obtain competitive rates, Penta Freight has the ability to get things done in a compliant manner. In addition, an excellent service level and professional relationship was maintained throughout the course of export operations. Best wishes for all success. "',
         name: "Operations Team",
         role: "Watson Pharmaceuticals",
         accentColor: "#E8A020",
@@ -40,9 +41,9 @@ const reviews = [
     {
         company: "Lufthansa Cargo",
         companyTagline: "Networking the world.",
-        logo: "/logos/lufthansa-cargo.png",
+        logo: "/Award11.png",
         quote:
-            '"Their dedication to precision and excellence in freight handling has made them an invaluable partner. Over the years, Penta Freight has demonstrated that they can handle complex logistics with remarkable efficiency and care.... "',
+            '"Penta Freight India was founded 25 years ago and has been a highly valued and reliable partner of Lufthansa Cargo since then. We know that they always stand by their commitment, which makes a meaningful difference to our business. Their continuous high focus on customer service and their strive towards individual solutions are key to staying dynamic and competitive in the market. Penta Freight is a pioneer in various ways: They were amongst the first forwarders to become our Premium Partner and so far they are the only one in India.... "',
         name: "Regional Manager",
         role: "Lufthansa Cargo India",
         accentColor: "#E8A020",
@@ -51,17 +52,16 @@ const reviews = [
 
 function CompanyLogo({ company, accentColor, logo }) {
     return (
-        <div className="flex items-center gap-3 mb-6">
-            {/* Placeholder logo circle — replace with <Image> when real logos are available */}
-            <div
-                className="w-10 h-10 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0"
-                style={{ backgroundColor: accentColor }}
-            >
-                {company.charAt(0)}
-            </div>
-            <span className="font-bold text-lg" style={{ color: accentColor }}>
-                {company}
-            </span>
+        <div className="flex items-center w-[50%] h-12 mx-auto gap-3 mb-6">
+
+            <Image
+                src={logo}
+                alt={company}
+                width={1000}
+                height={1000}
+                className="object-contain w-full h-full "
+            />
+
         </div>
     );
 }
@@ -69,8 +69,8 @@ function CompanyLogo({ company, accentColor, logo }) {
 function ReviewCard({ review, index }) {
     return (
         <div
-            className={`review-card w-md rounded-2xl border border-gray-200  bg-white p-8 sm:p-10 shadow-[0_8px_40px_rgba(0,0,0,0.06)]`}
-            style={{ opacity: 100, transform: `${index % 2 === 0 ? 'translateX(0px)' : 'translateX(160px)'} ` }}
+            className={`review-card w-sm rounded-2xl border border-gray-200  bg-white p-8 sm:p-10 shadow-[0_8px_40px_rgba(0,0,0,0.06)]`}
+            style={{ opacity: 100, transform: `${index % 2 === 0 ? 'translateX(0px)' : 'translateX(200px)'} ` }}
         >
             <CompanyLogo
                 company={review.company}

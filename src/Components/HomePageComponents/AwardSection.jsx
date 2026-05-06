@@ -7,49 +7,49 @@ const awards = [
     {
         id: 1,
         company: "Emirates SkyCargo",
-        logo: "/awards/emirates-skycargo.png",
+        logo: "/Awards1.png",
         achievements: ["Top Cargo Agents, 2016/17", "Top Cargo Agents, 2005/06"],
     },
     {
         id: 2,
         company: "Delta Air Lines",
-        logo: "/awards/delta-airlines.png",
+        logo: "/Award2.png",
         achievements: ["Top Revenue Performance, 2002"],
     },
     {
         id: 3,
         company: "Maskargo",
-        logo: "/awards/maskargo.png",
+        logo: "/Award3.png",
         achievements: ["Mega Tonners, 2006/07"],
     },
     {
         id: 4,
         company: "CONCOR",
-        logo: "/awards/concor.png",
+        logo: "/Award4.png",
         achievements: ["CONCOR Exim Star, 2003/04"],
     },
     {
         id: 5,
         company: "Air France",
-        logo: "/awards/airfrance.png",
+        logo: "/Award5.png",
         achievements: ["Meritorious Performance, 1999/2000"],
     },
     {
         id: 6,
         company: "Finnair Cargo",
-        logo: "/awards/finnair-cargo.png",
+        logo: "/Award6.png",
         achievements: ["Top Performance, 2008", "Top Performance, 2007"],
     },
     {
         id: 7,
         company: "IAG Cargo",
-        logo: "/awards/iag-cargo.png",
+        logo: "/Award7.png",
         achievements: ["Significant Support and Contribution, 2007"],
     },
     {
         id: 8,
         company: "STAT Trade Times",
-        logo: "/awards/stat-trade-times.png",
+        logo: "/Award8.png",
         achievements: [
             "International Award for Excellence in Air Cargo, Region India - Winner, 2018",
         ],
@@ -57,25 +57,25 @@ const awards = [
     {
         id: 9,
         company: "Turkish Airlines",
-        logo: "/awards/turkish-airlines.png",
+        logo: "/Award9.png",
         achievements: ["Best Agent Award, 2019"],
     },
     {
         id: 10,
         company: "Lufthansa Cargo",
-        logo: "/awards/lufthansa-cargo.png",
+        logo: "/Award10.png",
         achievements: ["Premium Partner Award, 2021"],
     },
     {
         id: 11,
         company: "Qatar Airways Cargo",
-        logo: "/awards/qatar-airways-cargo.png",
+        logo: "/Award11.png",
         achievements: ["Top Agent, 2020"],
     },
     {
         id: 12,
         company: "Singapore Airlines",
-        logo: "/awards/singapore-airlines.png",
+        logo: "/Award12.png",
         achievements: ["Best Performance Award, 2018"],
     },
 ];
@@ -184,7 +184,7 @@ export default function AwardsSection() {
                             width: 300,
                             height: 220,
                             background:
-                                "radial-gradient(ellipse at center, rgba(232,87,26,0.20) 0%, rgba(232,87,26,0.07) 55%, transparent 80%)",
+                                "radial-gradient(ellipse at center, rgba(0,0,0,0.20) 0%, rgba(0,0,0,0.07) 55%, transparent 80%)",
                             filter: "blur(4px)",
                             opacity: blobVisible ? 1 : 0,
                             transition: "opacity 0.35s ease",
@@ -192,7 +192,7 @@ export default function AwardsSection() {
                     />
 
                     {/* Cards */}
-                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5 relative z-10">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-8 relative z-10">
                         {awards.map((award, index) => {
                             const isActive = activeIndex === index;
                             return (
@@ -200,14 +200,14 @@ export default function AwardsSection() {
                                     key={award.id}
                                     ref={(el) => (cardRefs.current[index] = el)}
                                     onMouseEnter={() => handleMouseEnter(index)}
-                                    className="relative bg-white rounded-2xl border flex flex-col gap-5 p-6 sm:p-8 cursor-default select-none"
+                                    className="relative bg-white rounded-2xl border flex flex-col  gap-5 p-6 sm:p-8 cursor-default select-none"
                                     style={{
                                         borderColor: isActive
-                                            ? "rgba(232,87,26,0.30)"
+                                            ? "rgba(0,0,0,0.15)"
                                             : "rgba(0,0,0,0.07)",
                                         boxShadow: isActive
-                                            ? "0 0 0 1px rgba(232,87,26,0.18), 0 10px 36px rgba(232,87,26,0.10), 0 2px 8px rgba(0,0,0,0.05)"
-                                            : "0 1px 4px rgba(0,0,0,0.04)",
+                                            ? "0 0 0 1px rgba(0,0,0,0.08), 0 10px 36px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06)"
+                                            : "4px 4px 4px rgba(0,0,0,0.2)",
                                         transform: isActive ? "translateY(-3px)" : "translateY(0px)",
                                         transition:
                                             "box-shadow 0.35s ease, transform 0.35s ease, border-color 0.35s ease",
@@ -220,31 +220,17 @@ export default function AwardsSection() {
                                             alt={award.company}
                                             width={150}
                                             height={70}
-                                            className="object-contain max-h-[70px] max-w-[150px]"
+                                            className="object-contain max-h-[100px] max-w-[150px]"
                                         />
                                     </div>
 
-                                    {/* Divider */}
-                                    <div
-                                        className="h-px w-full"
-                                        style={{
-                                            backgroundColor: isActive
-                                                ? "rgba(232,87,26,0.18)"
-                                                : "#f0f0f0",
-                                            transition: "background-color 0.35s ease",
-                                        }}
-                                    />
-
                                     {/* Achievements */}
-                                    <div className="flex flex-col gap-1.5">
+                                    <div className="flex flex-col justify-center items-start gap-1.5">
                                         {award.achievements.map((a, i) => (
                                             <p
                                                 key={i}
                                                 className="text-xs sm:text-[13px] leading-snug"
-                                                style={{
-                                                    color: isActive ? "#555" : "#9ca3af",
-                                                    transition: "color 0.3s ease",
-                                                }}
+
                                             >
                                                 {a}
                                             </p>
