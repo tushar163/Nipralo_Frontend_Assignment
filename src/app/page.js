@@ -1,13 +1,64 @@
 "use client";
 
-import AchievementsSection from "@/Components/HomePageComponents/AchievementsSection";
-import AwardsSection from "@/Components/HomePageComponents/AwardSection";
-import CertificationsSection from "@/Components/HomePageComponents/Certificationssection";
-import ReviewSection from "@/Components/HomePageComponents/ReviewSection";
-import ServicesSection from "@/Components/HomePageComponents/ServicesSection";
-import WhyChooseSection from "@/Components/HomePageComponents/WhyChooseSection";
+import dynamic from "next/dynamic";
 import Image from "next/image";
-import { useRef } from "react";
+import { Suspense, useRef } from "react";
+const ServicesSection = dynamic(
+  () => import("@/Components/HomePageComponents/ServicesSection"),
+  { ssr: false, loading: () => <SectionSkeleton height="h-[600px]" /> }
+);
+
+const WhyChooseSection = dynamic(
+  () => import("@/Components/HomePageComponents/WhyChooseSection"),
+  { ssr: false, loading: () => <SectionSkeleton height="h-[500px]" /> }
+);
+
+const AchievementsSection = dynamic(
+  () => import("@/Components/HomePageComponents/AchievementsSection"),
+  { ssr: false, loading: () => <SectionSkeleton height="h-[320px]" dark /> }
+);
+
+const ReviewSection = dynamic(
+  () => import("@/Components/HomePageComponents/ReviewSection"),
+  { ssr: false, loading: () => <SectionSkeleton height="h-[700px]" /> }
+);
+
+const CertificationsSection = dynamic(
+  () => import("@/Components/HomePageComponents/Certificationssection"),
+  { ssr: false, loading: () => <SectionSkeleton height="h-[280px]" dark /> }
+);
+
+const AwardsSection = dynamic(
+  () => import("@/Components/HomePageComponents/AwardSection"),
+  { ssr: false, loading: () => <SectionSkeleton height="h-[600px]" /> }
+);
+
+const OurGlobalSection = dynamic(
+  () => import("@/Components/HomePageComponents/OurGlobalSection"),
+  { ssr: false, loading: () => <SectionSkeleton height="h-[520px]" dark /> }
+);
+
+// ── Skeleton placeholder shown while a chunk is downloading ──────────────────
+function SectionSkeleton({ height = "h-[400px]", dark = false }) {
+  return (
+    <div
+      className={`w-full ${height} flex items-center justify-center animate-pulse`}
+      style={{ backgroundColor: dark ? "#3D5166" : "#f5f5f5" }}
+    >
+      <div className="flex flex-col items-center gap-4 opacity-30">
+        <div
+          className="h-5 w-48 rounded-full"
+          style={{ backgroundColor: dark ? "white" : "#d1d5db" }}
+        />
+        <div
+          className="h-3 w-72 rounded-full"
+          style={{ backgroundColor: dark ? "white" : "#d1d5db" }}
+        />
+      </div>
+    </div>
+  );
+}
+
 
 export default function HeroBanner() {
   const nextSectionRef = useRef(null);
@@ -18,6 +69,7 @@ export default function HeroBanner() {
       nextSection.scrollIntoView({ behavior: "smooth" });
     }
   };
+
 
   return (
     <>
@@ -119,12 +171,33 @@ export default function HeroBanner() {
           </div>
         </div>
       </div>
-      <ServicesSection />
-      <WhyChooseSection />
-      <AchievementsSection />
-      <ReviewSection />
-      <CertificationsSection />
-      <AwardsSection />
+      <Suspense fallback={<SectionSkeleton height="h-[600px]" />}>
+        <ServicesSection />
+      </Suspense>
+
+      <Suspense fallback={<SectionSkeleton height="h-[500px]" />}>
+        <WhyChooseSection />
+      </Suspense>
+
+      <Suspense fallback={<SectionSkeleton height="h-[320px]" dark />}>
+        <AchievementsSection />
+      </Suspense>
+
+      <Suspense fallback={<SectionSkeleton height="h-[700px]" />}>
+        <ReviewSection />
+      </Suspense>
+
+      <Suspense fallback={<SectionSkeleton height="h-[280px]" dark />}>
+        <CertificationsSection />
+      </Suspense>
+
+      <Suspense fallback={<SectionSkeleton height="h-[600px]" />}>
+        <AwardsSection />
+      </Suspense>
+
+      <Suspense fallback={<SectionSkeleton height="h-[520px]" dark />}>
+        <OurGlobalSection />
+      </Suspense>
     </>
   );
 }
