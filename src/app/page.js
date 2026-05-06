@@ -1,65 +1,130 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import AchievementsSection from "@/Components/HomePageComponents/AchievementsSection";
+import AwardsSection from "@/Components/HomePageComponents/AwardSection";
+import CertificationsSection from "@/Components/HomePageComponents/Certificationssection";
+import ReviewSection from "@/Components/HomePageComponents/ReviewSection";
+import ServicesSection from "@/Components/HomePageComponents/ServicesSection";
+import WhyChooseSection from "@/Components/HomePageComponents/WhyChooseSection";
+import Image from "next/image";
+import { useRef } from "react";
+
+export default function HeroBanner() {
+  const nextSectionRef = useRef(null);
+
+  const handleScrollDown = () => {
+    const nextSection = document.getElementById("next-section");
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <>
+      {/* ── Hero Banner ── */}
+      <section className="relative w-full h-screen overflow-hidden">
+
+        {/* Background Video */}
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          src="/homevideo-bpwZoUMP.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+        {/* ── Semi-circle Scroll Button ── */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-20">
+          <button
+            onClick={handleScrollDown}
+            aria-label="Scroll to next section"
+            className="group relative flex items-start justify-center w-40 h-20 bg-transparent rounded-t-full shadow-[0_-4px_24px_rgba(0,0,0,0.25)] border-amber-50 border-[0.5px]  focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            {/* Down arrow SVG */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="w-5 h-5 mt-8 text-white transition-colors duration-300 animate-bounce"
+            >
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </button>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* ── Next Section (scroll target) ── */}
+      <section id="next-section"
+        ref={nextSectionRef} className="relative w-full h-screen min-h-[500px] max-h-[900px] sm:h-screen sm:max-h-none overflow-hidden">
+
+        {/* ── Background Flight Image ── */}
+        <Image
+          src="/flight.jpg"
+          alt="Penta Freight airplane in flight at sunset"
+          fill
+          priority
+          className="object-cover object-center"
+        />
+
+
+        <Image
+          src="/HomeSection.png" // your overlay image
+          alt="overlay"
+          fill
+          className="object-cover z-0 opacity-100  h-[120vh] w-full"
+        />
+
+        {/* ── Content ── */}
+        <div className="relative z-10 h-full flex flex-row gap-20 items-start px-6 sm:px-12 lg:px-20 pt-10 sm:pt-16 lg:pt-20 max-w-screen-xl mx-auto w-full">
+
+          {/* Label block */}
+          <div className="flex flex-col justify-center items-center mb-6 sm:mb-8 w-full ">
+            <span className="text-xs sm:text-sm font-bold tracking-[0.25em] uppercase text-[#E8571A]">
+              About Us
+            </span>
+
+            {/* Divider line */}
+            <div className="w-48 h-[2px] bg-[#E8571A] my-2" />
+
+            <span className="text-xs sm:text-sm font-bold tracking-[0.2em] uppercase text-[#E8571A]">
+              Penta Freight
+            </span>
+          </div>
+
+          {/* Description text */}
+          <div className="max-w-xs sm:max-w-sm lg:max-w-full">
+            <p className="text-sm sm:text-base lg:text-[17px] text-gray-700 leading-relaxed">
+              Penta Freight provides reliable{" "}
+              <strong className="text-gray-900 font-bold">logistics solutions</strong>,
+              specializing in temperature-sensitive shipments. We ensure safe,{" "}
+              <strong className="text-gray-900 font-bold">on-time delivery</strong>{" "}
+              worldwide. Trust us for seamless supply chain management.
+            </p>
+          </div>
+        </div>
+      </section>
+      <div>
+        <div className="py-8 md:py-10 bg-[#425462] bg-[url('/lineas-CSz1CbRe.png')] bg-no-repeat bg-cover">
+          <div className="flex flex-col items-center justify-center h-full text-center w-[85%] md:max-w-[60%] mx-auto">
+            <h2 className="mb-6 md:text-[36px] lg:text-[36px] text-[28px] font-[500] text-[#f06c30]">Our Philosophy</h2>
+            <p className="text-white mb-[2%] pb-5">Customer satisfaction drives everything we do. Every shipment is a promise, and we deliver it with precision, care, and professionalism. With expert resources, we ensure safe, timely transport, building lasting partnerships founded on trust and excellence.</p>
+            <button className="px-6 py-3 bg-[#E8571A] text-white rounded hover:bg-[#f06c30] transition-colors duration-300">
+              Read More
+            </button>
+          </div>
+        </div>
+      </div>
+      <ServicesSection />
+      <WhyChooseSection />
+      <AchievementsSection />
+      <ReviewSection />
+      <CertificationsSection />
+      <AwardsSection />
+    </>
   );
 }
