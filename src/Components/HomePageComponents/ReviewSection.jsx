@@ -69,8 +69,8 @@ function CompanyLogo({ company, accentColor, logo }) {
 function ReviewCard({ review, index }) {
     return (
         <div
-            className={`review-card w-sm rounded-2xl border border-gray-200  bg-white p-8 sm:p-10 shadow-[0_8px_40px_rgba(0,0,0,0.06)]`}
-            style={{ opacity: 100, transform: `${index % 2 === 0 ? 'translateX(0px)' : 'translateX(200px)'} ` }}
+            className={`review-card max-w-fit lg:w-sm rounded-2xl border border-gray-200  bg-white p-8 sm:p-10 shadow-[0_8px_40px_rgba(0,0,0,0.06)] ${index % 2 === 0 ? "translate-x-[0px]" : "lg:translate-x-[200px]"} `}
+        // style={{ opacity: 100, transform: `${index % 2 === 0 ? 'translateX(0px)' : 'translateX(200px)'} ` }}
         >
             <CompanyLogo
                 company={review.company}
