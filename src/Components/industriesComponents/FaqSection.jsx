@@ -1,4 +1,6 @@
-import Accordion from "@/components/Accordion";
+// import Accordion from "@/components/Accordion";
+
+import Accordion from "../Accordion";
 
 const faqs = [
   {
