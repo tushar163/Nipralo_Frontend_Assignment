@@ -35,6 +35,30 @@ body {
   }
 }
 
+@keyframes slideUpIn {
+  0% {
+    opacity: 0;
+    transform: translateY(28px);
+    clip-path: inset(100% 0 0 0);
+  }
+
+  40% {
+    clip-path: inset(0% 0 0 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    clip-path: inset(0% 0 0 0);
+  }
+}
+
+.content-line {
+  animation: slideUpIn 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--delay, 0ms);
+}
+
 @theme {
   --animate-marquee: marquee 20s linear infinite;
+  --animate-slide-up-in: slideUpIn 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
 }

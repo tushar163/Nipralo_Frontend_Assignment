@@ -1,3 +1,6 @@
+
+import FAQSection from "@/Components/pentakuhlComponents/FaqSection";
+import GuideSection from "@/Components/pentakuhlComponents/GuideSection";
 import PentakuhlAboutSection from "@/Components/pentakuhlComponents/PentakuhlAboutSection";
 import PentaKuhlHero from "@/Components/pentakuhlComponents/PentaKuhlHero";
 import ProductSolutionsSection from "@/Components/pentakuhlComponents/ProductSolutionsSection";
@@ -10,6 +13,8 @@ function PentaKuhlPage() {
       <PentakuhlAboutSection />
       <ReadMoreSection />
       <ProductSolutionsSection />
+      <GuideSection />
+      <FAQSection />
     </main>
   );
 }
