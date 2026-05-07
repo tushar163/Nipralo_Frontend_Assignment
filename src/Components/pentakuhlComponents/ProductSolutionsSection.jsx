@@ -17,13 +17,13 @@ const productSolutions = [
             {
                 label: "Single Use",
                 marks: [
-                    { name: "COOLGUARD", suffix: "PCM", tone: "red" },
-                    { name: "COOLGUARD", suffix: "ADVANCE", tone: "blue" },
+                    "/coolguardadvancelogo-DCu16CWg.png",
+                    "/coolguardpcmlogo-CtHYIIUo.png",
                 ],
             },
             {
                 label: "Reusable",
-                marks: [{ name: "Credo", suffix: "Cube", tone: "navy" }],
+                marks: ["/coolpalladvancelogo-CpFgiTwD.png"],
             },
         ],
     },
@@ -37,38 +37,30 @@ const productSolutions = [
             {
                 label: "Single Use",
                 marks: [
-                    { name: "COOLPALL", suffix: "VERTOS", tone: "teal" },
-                    { name: "COOLPALL", suffix: "VERTOS ADVANCE", tone: "gray" },
+                    "/credocargologo-D9antN4U.png",
+                    "/coolpalladvancelogo-CpFgiTwD.png",
                 ],
             },
             {
                 label: "Reusable",
                 marks: [
-                    { name: "Credo", suffix: "XTREME", tone: "pink" },
-                    { name: "Credo", suffix: "CARGO", tone: "red" },
+                    "/credocubelogo-BE0dilDj.png",
+                    "/credoextremelogo-BuGsJTKg.png",
                 ],
             },
         ],
     },
 ];
 
-const toneColors = {
-    red: "#ef4b35",
-    blue: "#2b9bdc",
-    navy: "#17477f",
-    teal: "#1797aa",
-    gray: "#6b7280",
-    pink: "#ef6d93",
-};
 
 function ProductMark({ mark }) {
     return (
         <div
             className="flex flex-col items-center justify-center font-bold leading-none"
-            style={{ color: toneColors[mark.tone] }}
+
         >
-            <span className="text-sm tracking-tight sm:text-base">{mark.name}</span>
-            <span className="mt-1 text-[10px] uppercase tracking-wider opacity-80">{mark.suffix}</span>
+            <img src={mark} alt="Product Mark" className="h-12 object-contain" />
+
         </div>
     );
 }
@@ -246,7 +238,7 @@ export default function ProductSolutionsSection() {
             {/* Subtle grid texture */}
             <div
                 className="pointer-events-none absolute inset-0 opacity-[0.03]"
-                
+
             />
 
             {/* ── Viewport frame ── */}
